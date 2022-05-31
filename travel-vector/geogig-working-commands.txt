@@ -1,0 +1,68 @@
+Usage: geogig export [options] [<commit-ish>:]<path> <table> (define source feature type tree and target table name)
+  Options:
+    --alter
+       Export all features if several types are found, altering them to adapt to
+       the output feature type
+       Default: false
+    --database, -D
+       The database to connect to.  Default: database.gpkg
+       Default: database.gpkg
+    --defaulttype
+       Export only features with the tree default feature type if several types
+       are found
+       Default: false
+    --featuretype
+       Export only features with the specified feature type if several types are
+       found
+    -i, --interchange
+       Export as geogig mobile interchange format
+       Default: false
+    --overwrite, -o
+       Overwrite output table
+       Default: false
+    --user, -U
+       User name.  Default: user
+       Default: user
+
+
+Usage: geogig import [options]
+  Options:
+    --add
+       Do not replace or delete features on the destination path, but just add
+       new ones
+       Default: false
+    --all
+       Import all tables.
+       Default: false
+    --alter
+       Set the path default feature type to the the feature type of imported
+       features, and modify existing features to match it
+       Default: false
+    -f, --cql-filter
+       GetoTools ECQL filter
+    --database, -D
+       The database to connect to.  Default: database.gpkg
+       Default: database.gpkg
+    -d, --dest
+       Path to import to
+    --fid-attrib
+       Use the specified attribute to create the feature Id
+    --force-featuretype
+       Use origin feature type even if it does not match the default destination
+       featuretype
+       Default: false
+    --table, -t
+       Table to import.
+       Default: <empty string>
+    --user, -U
+       User name.  Default: user
+       Default: user
+
+
+
+ ./bin/geogig --repo repo2/ geopkg export trees trees
+ ./bin/geogig --repo repo2/  geopkg import --table trees
+ ./bin/geogig --repo repo2/ ls
+ ./bin/geogig --repo repo2/ status
+ ./bin/geogig --repo repo2/ add
+ ./bin/geogig --repo repo2/ commit -m "Changed one attributes on one tree"
